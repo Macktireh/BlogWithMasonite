@@ -8,6 +8,7 @@ ROUTES = [
         [
             Route.get("/create", "BlogController@show").name("blog"),
             Route.post("/create", "BlogController@store").name("blog.store"),
+            Route.get("/@id", "BlogController@single").name("blog.single"),
         ],
         prefix="blog",
         middleware=["auth", "web"],

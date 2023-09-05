@@ -13,7 +13,7 @@
     <div class="bg-white p-4 rounded shadow-md">
       <h3 class="text-xl font-semibold">{{ post.title }}</h3>
       <p class="mt-2 text-gray-600">{{ post.body|truncatechars }}</p>
-      <a href="#" class="mt-4 text-blue-500 hover:underline">Read more</a>
+      <a href="/blog/{{ post.id }}" class="mt-4 text-blue-500 hover:underline">Read more</a>
     </div>
     @endfor
   </div>

@@ -18,3 +18,7 @@ class BlogController(Controller):
         postRepository.createPost(payload)
 
         return response.redirect(name="home")
+    
+    def single(self, view: View, request: Request, postRepository: PostRepository) -> View:
+        post = postRepository.getPostById(request.param("id"))
+        return view.render("blog/single", {"post": post})

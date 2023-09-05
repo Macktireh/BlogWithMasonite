@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Single{% endblock %}
+
+
+{% block content %}
+<div class="container mx-auto bg-white p-8 rounded shadow-md">
+    <h1 class="text-2xl font-semibold mb-4">{{ post.title }}</h1>
+    <p class="text-gray-600 mb-4">Published on <span class="font-semibold">{{ post.created_at }}</span> by <span class="font-semibold">{{ post.author.name }}</span></p>
+    
+    <div class="mb-6">
+        <img src="https://picsum.photos/500/500" alt="Post Image" class="w-full h-96 object-cover rounded-lg">
+    </div>
+    
+    <div class="text-gray-700">
+        <p class="mb-4">{{ post.body|linebreaks|safe }}</p>
+    </div>
+</div>
+{% endblock %}

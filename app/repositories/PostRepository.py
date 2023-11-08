@@ -1,6 +1,6 @@
 from typing import List
 
-from app.interfaces.Post import IPost
+from app.interfaces.Post import IPost, IUpdatedPost
 from app.models.Post import Post
 
 
@@ -14,8 +14,12 @@ class PostRepository:
     def createPost(self, post: IPost) -> Post:
         return Post.create(**post)
 
-    def updatePost(self, id: int, post: IPost) -> Post:
-        return Post.find(id).update(**post)
+    def updatePost(self, id: int, payload: IUpdatedPost) -> Post:
+        post = Post.find(id)
+        for key, value in payload.items():
+            setattr(post, key, value)
+        post.save()
+        return post        
 
     def deletePost(self, id: int) -> None:
         return Post.find(id).delete()
